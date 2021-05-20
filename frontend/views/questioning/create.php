@@ -50,9 +50,7 @@ $this->params['breadcrumbs'][] = $this->title;
     </div>
     <div class="row">
         <div class="col-md-12">
-            <?= $form->field($model, 'rating')->radioList([
-                1, 2, 3, 4, 5, 6, 7, 8, 9, 10
-            ])->label(false) ?>
+            <?= $form->field($model, 'rating')->radioList(Questioning::getRatingRange())->label(false) ?>
         </div>
     </div>
     <div class="row">

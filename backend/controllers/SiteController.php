@@ -1,7 +1,10 @@
 <?php
 namespace backend\controllers;
 
+use common\models\Questioning;
+use common\services\QuestioningChartService;
 use Yii;
+use yii\helpers\ArrayHelper;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
@@ -26,7 +29,7 @@ class SiteController extends Controller
                         'allow' => true,
                     ],
                     [
-                        'actions' => ['logout', 'index'],
+                        'actions' => ['logout', 'index', 'chart'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -61,6 +64,26 @@ class SiteController extends Controller
     public function actionIndex()
     {
         return $this->render('index');
+    }
+
+    /**
+     * Displays homepage.
+     *
+     * @return string
+     */
+    public function actionChart()
+    {
+        $models = Questioning::find()->all();
+        $pieData = QuestioningChartService::getPieData($models);
+
+        $categories = Questioning::getRatingRange();
+        $columnData = QuestioningChartService::getColumnData($models);
+
+        return $this->render('chart', [
+            'pieData' => $pieData,
+            'categories' => $categories,
+            'columnData' => $columnData
+        ]);
     }
 
     /**

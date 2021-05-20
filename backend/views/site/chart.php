@@ -21,10 +21,12 @@ $this->title = "Анкетирование";
         'yAxis' => [
             'title' => ['text' => 'Оценка']
         ],
-        'series' => [[
-            'name' => 'Количество',
-            'data' => $pieData
-        ]]
+        'series' => [
+            [
+                'name' => 'Количество',
+                'data' => array_values($pieData)
+            ]
+        ]
     ]
 ]) ?>
 

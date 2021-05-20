@@ -74,9 +74,9 @@ class SiteController extends Controller
     public function actionChart()
     {
         $models = Questioning::find()->all();
-        $pieData = QuestioningChartService::getPieData($models);
 
-        $categories = Questioning::getRatingRange();
+        $pieData = QuestioningChartService::getPieData($models);
+        $categories = array_values(Questioning::getRatingRangeMap());
         $columnData = QuestioningChartService::getColumnData($models);
 
         return $this->render('chart', [

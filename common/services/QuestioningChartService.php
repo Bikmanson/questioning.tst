@@ -27,7 +27,7 @@ class QuestioningChartService
 
     public static function getColumnData(array $models)
     {
-        $rates = Questioning::getRatingRange();
+        $rates = array_values(Questioning::getRatingRangeMap());
 
         $data = [];
         $ratingMap = self::getRatingMap($models);

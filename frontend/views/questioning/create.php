@@ -50,7 +50,7 @@ $this->params['breadcrumbs'][] = $this->title;
     </div>
     <div class="row">
         <div class="col-md-12">
-            <?= $form->field($model, 'rating')->radioList(Questioning::getRatingRange())->label(false) ?>
+            <?= $form->field($model, 'rating')->radioList(Questioning::getRatingRangeMap())->label(false) ?>
         </div>
     </div>
     <div class="row">
@@ -60,7 +60,7 @@ $this->params['breadcrumbs'][] = $this->title;
     </div>
 
     <div class="form-group">
-        <?= Html::submitButton('Сохранить', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('Отправить', ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>
